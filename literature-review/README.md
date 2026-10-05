@@ -72,17 +72,21 @@ For Zotero, also set up the [zotero](../zotero/) skill.
 
 Start a session in your review folder and type `/lit-review`, then your question. Claude
 agrees on a plan with you before searching, asks you to download the papers that need a full
-read, and writes the reading log and the review file.
+read, and writes the reading log and the review file. To add one paper, give it the DOI.
+
+With the [zotero](../zotero/) skill installed as well, papers also go into your Zotero library.
+Nothing changes in how you use `/lit-review`.
 
 ## Tutorial, 10 minutes
 
-Live, everyone on their own laptop. Needs only Claude Code and the skill, no Zotero.
+Live, everyone on their own laptop. Participants need only Claude Code and the `lit-review`
+skill. The last step is a demo by the presenter, who has the `zotero` skill set up.
 
 | Min | Show | Participants do | Point |
 |---|---|---|---|
 | 2 | Ask Claude for 5 papers on a topic, with DOIs, no tools | Check each DOI at `api.openalex.org/works/doi:<doi>` | Some do not exist. Never trust a reference from memory |
 | 2 | Same question, Claude searches OpenAlex | Pick one result, ask who cites it | Real papers, and snowballing in one call |
-| 3 | Add that paper with `/lit-review` | Add it, check the reading log entry | The abstract is checked, the entry gets a DOI and a citekey |
-| 3 | Write one reading log entry for it | Write theirs, decide the tier themselves | The log holds the judgment |
+| 3 | `/lit-review` and the DOI of that paper | Add it, read the entry, set the tier yourself | The abstract is checked. The log holds the judgment, Claude only drafts it |
+| 3 | Demo: the same DOI again, now with Zotero | Watch | It is found in Zotero by DOI and not added twice. Highlights and PDFs are readable too |
 
-Next step for those who use Zotero: the [zotero](../zotero/) skill.
+Want the Zotero part as well? Follow the [zotero](../zotero/) setup afterwards.
