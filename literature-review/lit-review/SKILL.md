@@ -8,29 +8,30 @@ tags:
 
 ## Requires
 
-Check these before the first round. If one is missing, say so and stop.
+Check these before the first round. If one is missing, say so and stop. Setup steps are in
+the README that comes with this skill.
 
-- **Zotero MCP**, [54yyyu/zotero-mcp](https://github.com/54yyyu/zotero-mcp), installed as
-  `zotero-mcp-server[semantic]`, registered under the name `zotero`, in web API mode.
-  Check with `zotero:zotero_write_capabilities`.
-- **Better BibTeX** in Zotero, so every item has a citekey. Check that one item's
-  `zotero:zotero_get_item_metadata` with `format="json"` shows a `citationKey`.
-- **OpenAlex key** at `~/.config/openalex/api-key`. Optional. Without it the daily budget is
-  10 times smaller.
-- **A reading log** `reading-log.md` in a git repo, and a `reviews/` folder for review files.
+- **Zotero MCP**, registered as `zotero`. Check with `zotero:zotero_write_capabilities`.
+- **Better BibTeX**. Check that one item's `zotero:zotero_get_item_metadata` with
+  `format="json"` shows a `citationKey`.
+- **OpenAlex key** at `~/.config/openalex/api-key`. Optional.
+- **A reading log** `reading-log.md` and a `reviews/` folder, in a git repo.
 
 Paths: `reading-log.md` and `reviews/` are in the working folder. `scripts/` and
 `references/` are in this skill's folder.
 
-## Quick tasks
+## Adding a paper
 
-Adding one paper or checking a citation needs no round.
+The same rule for a single paper and for papers found in a round.
 
 1. Check for a duplicate: grep the reading log, then search Zotero by DOI.
-2. Check the abstract with `scripts/openalex_abstract.py`. No abstract anywhere means do not
-   add, and say why.
-3. Ask which collection it belongs in, then add it as described in
-   [references/zotero-mcp.md](references/zotero-mcp.md).
+2. Check the abstract: `python3 <skill folder>/scripts/openalex_abstract.py <DOI>`. Exit code
+   1 means OpenAlex has none. If no other source has one either, do not add the paper. Say
+   why, and in a round list it as skipped in the Search log.
+3. Add it as described in [references/zotero-mcp.md](references/zotero-mcp.md), with the open
+   access PDF when one exists. For a single paper, ask which collection it belongs in first.
+4. If the Zotero item has no abstract, write the script output into it with
+   `zotero:zotero_update_item`.
 
 ## Workflow
 
@@ -56,14 +57,7 @@ Round progress:
    `zotero:zotero_create_collection`, named after the round.
 2. **Check what is known.** Grep the reading log first, then search Zotero.
 3. **Search and add.** Use the tools below. Write each search into the review file's Search
-   log: query, source, filter, hits, papers added.
-   - A paper needs at least an abstract to be added. Before adding, run
-     `python3 <skill folder>/scripts/openalex_abstract.py <DOI>`. Exit code 1 means OpenAlex
-     has none. If no other source has one either, do not add the paper. List it as skipped,
-     with the reason.
-   - After adding, if the Zotero item has no abstract, write the script output into it with
-     `zotero:zotero_update_item`.
-   - Attach the open access PDF when one exists.
+   log: query, source, filter, hits, papers added. Add papers as in "Adding a paper".
 4. **Request full texts.** List the papers that must be read in full to be judged reliably:
    likely core papers, and papers whose numbers, setup or model the review depends on. Give
    each with its DOI link and the reason. Ask the user to download them, for example with
