@@ -1,25 +1,51 @@
 [
   {
-    "query": "Add the paper with DOI <a DOI already in the library> to the collection for this round.",
+    "skills": [
+      "lit-review"
+    ],
+    "setup": "No Zotero MCP.",
+    "query": "Add this paper: <a DOI with an abstract in OpenAlex, not in the reading log>.",
     "expected_behavior": [
-      "Calls zotero:zotero_add_item with if_exists set to file",
-      "Reports that the item already exists and only adds the collection",
-      "The top-level item count is the same before and after"
+      "Greps the reading log for the DOI",
+      "Runs scripts/openalex_abstract.py",
+      "Writes a reading log entry with DOI, a citekey like smith2020, and no Zotero field",
+      "Makes no Zotero calls"
     ]
   },
   {
-    "query": "Add this paper: <a DOI with no abstract in OpenAlex or the publisher page>.",
+    "skills": [
+      "lit-review"
+    ],
+    "setup": "No Zotero MCP.",
+    "query": "Add this paper: <a DOI with no abstract anywhere>.",
     "expected_behavior": [
-      "Runs scripts/openalex_abstract.py before adding",
+      "Runs scripts/openalex_abstract.py",
       "Does not add the paper",
-      "Lists it as skipped with the reason: no abstract available"
+      "Says why: no abstract available"
     ]
   },
   {
-    "query": "Run a review round on <a topic with no relevant literature in the library or OpenAlex>.",
+    "skills": [
+      "lit-review",
+      "zotero"
+    ],
+    "setup": "Zotero MCP connected.",
+    "query": "Add the paper with DOI <a DOI already in the library>.",
+    "expected_behavior": [
+      "Reads the zotero skill",
+      "Finds the existing item by DOI",
+      "Creates no new item. The top-level item count is unchanged"
+    ]
+  },
+  {
+    "skills": [
+      "lit-review"
+    ],
+    "setup": "Any.",
+    "query": "Run a review round on <a topic with no relevant literature>.",
     "expected_behavior": [
       "Agrees on a plan with sub-questions and waits for go",
-      "Logs each search with query, source and hit count",
+      "Logs each search",
       "Says plainly that nothing relevant was found and adds no padding papers"
     ]
   }

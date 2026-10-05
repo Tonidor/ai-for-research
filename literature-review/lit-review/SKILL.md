@@ -1,6 +1,6 @@
 ---
 name: lit-review
-description: Runs literature review rounds with Zotero, OpenAlex, a reading log and one review file per round, kept in git. Use when planning a review, searching or snowballing papers, adding papers to Zotero, writing reading log entries or review files, or checking a citation.
+description: Runs literature review rounds with OpenAlex, a reading log and one review file per round, kept in git. Works without Zotero, and uses the zotero skill when it is installed. Use when planning a review, searching or snowballing papers, adding papers to Zotero, writing reading log entries or review files, or checking a citation.
 tags:
   - ai-generated
 ---
@@ -8,30 +8,35 @@ tags:
 
 ## Requires
 
-Check these before the first round. If one is missing, say so and stop. Setup steps are in
-the README that comes with this skill.
+If one is missing, say so and stop.
 
-- **Zotero MCP**, registered as `zotero`. Check with `zotero:zotero_write_capabilities`.
-- **Better BibTeX**. Check that one item's `zotero:zotero_get_item_metadata` with
-  `format="json"` shows a `citationKey`.
-- **OpenAlex key** at `~/.config/openalex/api-key`. Optional.
-- **A reading log** `reading-log.md` and a `reviews/` folder, in a git repo.
+- A git repo with `reading-log.md`, a `reviews/` folder, and `pdfs/` in `.gitignore`. Offer to
+  create them when they are missing.
+- Optional: an OpenAlex key at `~/.config/openalex/api-key`. Without it the daily budget is
+  10 times smaller.
 
-Paths: `reading-log.md` and `reviews/` are in the working folder. `scripts/` and
+Paths: `reading-log.md`, `reviews/` and `pdfs/` are in the working folder. `scripts/` and
 `references/` are in this skill's folder.
+
+## With Zotero
+
+If the `zotero` skill is installed, read it before the first paper is added. It adds to four
+points here: the duplicate check, adding a paper, the round's collection, and full texts.
+Without it, the reading log alone is the record of which papers exist.
 
 ## Adding a paper
 
 The same rule for a single paper and for papers found in a round.
 
-1. Check for a duplicate: grep the reading log, then search Zotero by DOI.
+1. Check for a duplicate: grep the DOI in the reading log. If the paper is already there,
+   say so and stop.
 2. Check the abstract: `python3 <skill folder>/scripts/openalex_abstract.py <DOI>`. Exit code
    1 means OpenAlex has none. If no other source has one either, do not add the paper. Say
    why, and in a round list it as skipped in the Search log.
-3. Add it as described in [references/zotero-mcp.md](references/zotero-mcp.md), with the open
-   access PDF when one exists. For a single paper, ask which collection it belongs in first.
-4. If the Zotero item has no abstract, write the script output into it with
-   `zotero:zotero_update_item`.
+3. Give it a citekey: the first author's last name in lowercase plus the year, like
+   `smith2020`. Add `a`, `b` if the log already has it.
+4. Write the reading log entry. In a round it goes under the round's heading. A single paper
+   goes under `## Single papers` with the date it was added and `Tier: unsorted`.
 
 ## Workflow
 
@@ -50,26 +55,25 @@ Round progress:
 ```
 
 1. **Plan.** Agree on the review question, split into two or three sub-questions, plus search
-   terms, venues, years and what counts as in or out. If the reading log is new, propose the
+   terms, venues, years and what counts as in or out. If this is the first round, propose the
    tier definitions in the same question. Start the review file with Questions and Plan, in
    the format in [references/formats.md](references/formats.md). Do not search before the
-   user says go. After the go, create the round's Zotero collection with
-   `zotero:zotero_create_collection`, named after the round.
-2. **Check what is known.** Grep the reading log first, then search Zotero.
+   user says go.
+2. **Check what is known.** Grep the reading log.
 3. **Search and add.** Use the tools below. Write each search into the review file's Search
    log: query, source, filter, hits, papers added. Add papers as in "Adding a paper".
 4. **Request full texts.** List the papers that must be read in full to be judged reliably:
    likely core papers, and papers whose numbers, setup or model the review depends on. Give
-   each with its DOI link and the reason. Ask the user to download them, for example with
-   the Zotero Connector, and wait.
+   each with its DOI link and the reason. Ask the user to download them into `pdfs/` as
+   `<citekey>.pdf`, and wait.
 5. **Write the reading log.** A round heading with a link to the review file, then one entry
    per paper. Then fill Papers found in the review file. Formats are in
    [references/formats.md](references/formats.md).
 6. **Pick one to three must-reads** for the user, in reading order: foundations first, then
    details. Write them into the review file. Each must be on the step 4 list, so its entry
    was written from the full text.
-7. **Write the synthesis** in the review file. Check each key claim against the paper text
-   through the MCP. Then commit the reading log and the review file.
+7. **Write the synthesis** in the review file. Check each key claim against the paper text.
+   Then commit the reading log and the review file.
 
 If nothing good was found, say so plainly. An empty result is a valid result. Never pad the
 list to look productive.
@@ -78,9 +82,8 @@ list to look productive.
 
 - **OpenAlex** first. Search with `api.openalex.org/works?search=...`, look up a DOI with
   `api.openalex.org/works/doi:<doi>`, find citing papers with `works?filter=cites:<id>`.
-  Send the key in the header, `-H "Authorization: Bearer $(cat ~/.config/openalex/api-key)"`.
-  Never print it or put it in a URL.
-- **Zotero MCP** for finding, reading and adding papers. Read
-  [references/zotero-mcp.md](references/zotero-mcp.md) before the first call.
+  The open access PDF, when there is one, is in `best_oa_location.pdf_url`. Send the key in
+  the header, `-H "Authorization: Bearer $(cat ~/.config/openalex/api-key)"`. Never print it
+  or put it in a URL.
 - **Google Scholar** as a second check for venues OpenAlex misses. It has no API and blocks
   scripts. Use it only through the browser. At any CAPTCHA, stop and hand the user the link.

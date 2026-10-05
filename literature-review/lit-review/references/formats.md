@@ -6,18 +6,19 @@ tags:
 
 ## Reading log
 
-One file, `reading-log.md`, one entry per paper. This is where judgments live. Zotero holds
-the paper, the log holds what it means for the project.
+One file, `reading-log.md`, one entry per paper. This is where judgments live. The paper
+itself is in Zotero or `pdfs/`, the log holds what it means for the project.
 
 ```markdown
 ### [citekey] Short title
-Zotero: ITEMKEY · Tier: core · Source: full PDF · 2026-09-14
+DOI: 10.1234/abcd · Zotero: ITEMKEY · Tier: core · Source: full PDF · 2026-09-14
 - Problem: what gap the paper addresses.
 - Approach: the setup, with the numbers a model needs.
 - Finding: the result, with numbers. Check this one against the PDF.
 - Relevance: what it means for the project, and what it rules in or out.
 ```
 
+- **DOI:** always. **Zotero:** the item key, only when the paper is in Zotero.
 - **Tier:** `core`, `supporting`, `peripheral`, or `unsorted` until decided. Only the user
   decides. Default meanings:
   - **core**: the project cannot go ahead without it. It gives a number, mechanism, method or
@@ -26,11 +27,11 @@ Zotero: ITEMKEY · Tier: core · Source: full PDF · 2026-09-14
     ahead without it.
   - **peripheral**: context only. Motivation or related work.
 
-  When starting a new reading log, write these at its top, adapted to the project with the
+  At the first round, write these at the top of the log, adapted to the project with the
   user. From then on the log's version is the one that counts.
 - **Source:** what the bullets were written from. `full PDF`, `full text`, `partial text`,
   `abstract + PDF spot check`, `abstract`, or `unknown`. It says how far to trust the entry.
-- **Date:** the date of the review round.
+- **Date:** the date of the review round, or the date added for a single paper.
 - Group entries by review round, one `##` section per round. Under the heading, only a link
   to the round's review file:
   ```markdown
@@ -39,6 +40,8 @@ Zotero: ITEMKEY · Tier: core · Source: full PDF · 2026-09-14
   Review: `reviews/priming.md`
   ```
   The question, plan and search log live in the review file, not here.
+- Papers added outside a round go under one `## Single papers` section at the end, with the
+  date they were added.
 - Claude greps the log. It never loads the whole file.
 
 ## Review file
@@ -51,7 +54,7 @@ everything about the round except the per-paper detail, which stays in the readi
 ---
 type: review
 date: 2026-10-05
-zotero_collection: Priming (ABCD1234)
+zotero_collection: Priming (ABCD1234)   # only with Zotero
 papers: [smith2020, lee2023, kim2021]
 ---
 # Priming review
