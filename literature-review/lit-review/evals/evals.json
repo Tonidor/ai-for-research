@@ -1,0 +1,26 @@
+[
+  {
+    "query": "Add the paper with DOI <a DOI already in the library> to the collection for this round.",
+    "expected_behavior": [
+      "Calls zotero:zotero_add_item with if_exists set to file",
+      "Reports that the item already exists and only adds the collection",
+      "The top-level item count is the same before and after"
+    ]
+  },
+  {
+    "query": "Add this paper: <a DOI with no abstract in OpenAlex or the publisher page>.",
+    "expected_behavior": [
+      "Runs scripts/openalex_abstract.py before adding",
+      "Does not add the paper",
+      "Lists it as skipped with the reason: no abstract available"
+    ]
+  },
+  {
+    "query": "Run a review round on <a topic with no relevant literature in the library or OpenAlex>.",
+    "expected_behavior": [
+      "Agrees on a plan with sub-questions and waits for go",
+      "Logs each search with query, source and hit count",
+      "Says plainly that nothing relevant was found and adds no padding papers"
+    ]
+  }
+]
