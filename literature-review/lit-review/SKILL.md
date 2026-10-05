@@ -36,7 +36,7 @@ The same rule for a single paper and for papers found in a round.
 3. Give it a citekey: the first author's last name in lowercase plus the year, like
    `smith2020`. Add `a`, `b` if the log already has it.
 4. Write the reading log entry. In a round it goes under the round's heading. A single paper
-   goes under `## Single papers` with the date it was added and `Tier: unsorted`.
+   goes under `## Single papers` with the date it was added.
 
 ## Workflow
 

@@ -1,0 +1,250 @@
+<!doctype html>
+<!-- tags: ai-generated -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Literature Review Skill</title>
+<style>
+  :root {
+    --bg: #f6f7f5;
+    --card: #ffffff;
+    --ink: #16191d;
+    --muted: #5f6670;
+    --border: #e1e4df;
+    --accent: #1f7a5c;
+    --accent-soft: #e3f0ea;
+    --warn: #b06a12;
+    --warn-soft: #f7ecdb;
+    --code-bg: #eef0ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14171b;
+      --card: #1b1f24;
+      --ink: #e8eae7;
+      --muted: #9aa1aa;
+      --border: #2c3137;
+      --accent: #4fb08b;
+      --accent-soft: #1d3a30;
+      --warn: #d9a05b;
+      --warn-soft: #3a2e1c;
+      --code-bg: #23272d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171b;
+    --card: #1b1f24;
+    --ink: #e8eae7;
+    --muted: #9aa1aa;
+    --border: #2c3137;
+    --accent: #4fb08b;
+    --accent-soft: #1d3a30;
+    --warn: #d9a05b;
+    --warn-soft: #3a2e1c;
+    --code-bg: #23272d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 18px 0 6px; }
+  h2 { font-size: 21px; margin: 44px 0 10px; }
+  h3 { font-size: 16px; margin: 0 0 6px; }
+  p { margin: 8px 0; }
+  .lead { color: var(--muted); font-size: 17px; }
+  .hero img { width: 100%; max-width: 498px; border-radius: 12px; display: block; }
+  code {
+    font: 14px ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  pre {
+    font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--code-bg);
+    padding: 12px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+  pre code { background: none; padding: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .card p { color: var(--muted); font-size: 15px; margin: 4px 0; }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 1px 9px;
+    margin-bottom: 6px;
+  }
+  .tag.optional { color: var(--warn); background: var(--warn-soft); }
+  ol.steps { list-style: none; padding: 0; margin: 12px 0; counter-reset: s; }
+  ol.steps li {
+    counter-increment: s;
+    position: relative;
+    padding: 9px 12px 9px 46px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 8px;
+    margin-bottom: 6px;
+  }
+  ol.steps li::before {
+    content: counter(s);
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    line-height: 22px;
+  }
+  ol.steps li.pause { border-color: var(--warn); }
+  ol.steps li.pause::after {
+    content: "you decide";
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--warn);
+  }
+  .loop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 12px 0;
+  }
+  .loop span {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 15px;
+  }
+  .loop b { color: var(--muted); font-weight: 400; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 10px 0; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .table-wrap { overflow-x: auto; }
+  .note { color: var(--muted); font-size: 14.5px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+
+<section class="hero">
+  <img src="i-choose-you.gif" alt="Ash throwing a Poke Ball: I choose you!">
+  <h1>/lit-review, I choose you!</h1>
+  <p class="lead">A literature review skill for Claude. Why you want your own, which tools it
+  needs, and how to use it. 10 minutes.</p>
+</section>
+
+<h2>Why your own skill</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Without a skill</h3>
+    <p>You explain your process again every session. Claude summarizes from memory, invents
+    references, and every round looks different.</p>
+  </div>
+  <div class="card">
+    <h3>With a skill</h3>
+    <p>Your process is written down once. Claude follows it every time: plan, search, add,
+    read, log, synthesize. You only make the decisions.</p>
+  </div>
+</div>
+
+<p>Refining it makes it better. Every time you notice something that did not go as planned,
+you can edit the skill and avoid it next time.</p>
+<div class="loop">
+  <span>Run a round</span><b>→</b>
+  <span>Notice a gap</span><b>→</b>
+  <span>Add one line</span><b>→</b>
+  <span>Next round is better</span>
+</div>
+
+<h2>Tools, and why</h2>
+<div class="grid">
+  <div class="card">
+    <span class="tag">needed</span>
+    <h3>A search engine</h3>
+    <p>For example OpenAlex or Google Scholar. References come from a database, not from
+    Claude's memory. It also finds who cites a paper and checks DOIs.</p>
+  </div>
+  <div class="card">
+    <span class="tag">needed</span>
+    <h3>A backed-up place for the review</h3>
+    <p>For example git or Google Drive. Your reading log and review files live there: your
+    judgment, safe and with history.</p>
+  </div>
+  <div class="card">
+    <span class="tag optional">optional</span>
+    <h3>A library</h3>
+    <p>For example Zotero or Mendeley. Papers, PDFs and your highlights in one place, no
+    paper added twice, citekeys for LaTeX.</p>
+  </div>
+</div>
+<p class="note">The skill in this repo uses OpenAlex, git and Zotero.</p>
+
+<h2>How to use it</h2>
+<p>Get the ai-for-research repo. The first time, clone it. Later, pull for updates:</p>
+<pre><code>git clone https://github.com/Tonidor/ai-for-research.git
+cd ai-for-research &amp;&amp; git pull</code></pre>
+<p>Copy the <code>lit-review</code> skill into the folder where you do your literature
+review. If you use Zotero, copy the <code>zotero</code> skill too:</p>
+<pre><code>cd &lt;your review folder&gt;
+mkdir -p .claude/skills
+cp -R &lt;path to&gt;/ai-for-research/literature-review/lit-review .claude/skills/
+cp -R &lt;path to&gt;/ai-for-research/literature-review/zotero .claude/skills/   # optional</code></pre>
+<p>Start Claude in that folder and type <code>/lit-review</code> and your question. A round has seven steps. Claude
+stops twice and waits for you.</p>
+<ol class="steps">
+  <li class="pause"><b>Plan.</b> Question, sub-questions, search terms, what is in or out.</li>
+  <li><b>Check what is known.</b> Claude greps your reading log.</li>
+  <li><b>Search and add.</b> OpenAlex. A paper needs at least an abstract.</li>
+  <li class="pause"><b>Full texts.</b> Claude lists the papers it must read in full. You download them.</li>
+  <li><b>Reading log.</b> One entry per paper: problem, approach, finding, relevance.</li>
+  <li><b>Must-reads.</b> One to three papers for you, in reading order.</li>
+  <li><b>Synthesis.</b> Answers per sub-question, contradictions, gaps. Then commit.</li>
+</ol>
+<p>A reading log entry looks like this:</p>
+<pre><code>### [smith2020] Short title
+DOI: 10.1234/abcd · Tier: core · Source: full PDF · 2026-10-05
+- Problem: what gap the paper addresses.
+- Approach: the setup, with the numbers a model needs.
+- Finding: the result, with numbers.
+- Relevance: what it means for your project.</code></pre>
+<p>To add a single paper, give it the DOI: <code>/lit-review 10.1234/abcd</code>.</p>
+
+<h2>Try it</h2>
+<p>Pick a topic from your own research and run a short round:</p>
+<pre><code>/lit-review Do a short review round on &lt;your topic&gt;. Keep it to about 10 papers.</code></pre>
+<p>Watch where it stops for you, read the entries it writes, and note one thing you would
+change. That is your first edit to the skill.</p>
+
+<p class="note">Setup, Linux and macOS: <a href="README.md">literature-review/README.md</a> in the
+ai-for-research repo.</p>
+
+</main>
+</body>
+</html>

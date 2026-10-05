@@ -19,8 +19,8 @@ DOI: 10.1234/abcd · Zotero: ITEMKEY · Tier: core · Source: full PDF · 2026-0
 ```
 
 - **DOI:** always. **Zotero:** the item key, only when the paper is in Zotero.
-- **Tier:** `core`, `supporting`, `peripheral`, or `unsorted` until decided. Only the user
-  decides. Default meanings:
+- **Tier:** `core`, `supporting` or `peripheral`. Claude proposes it from the Relevance
+  bullet, and the user can change it. Default meanings:
   - **core**: the project cannot go ahead without it. It gives a number, mechanism, method or
     dataset the work must build on or be checked against.
   - **supporting**: shapes a choice, a parameter range or a design, but the work could go
