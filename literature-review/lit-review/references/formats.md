@@ -30,7 +30,8 @@ DOI: 10.1234/abcd · Zotero: ITEMKEY · Tier: core · Source: full PDF · 2026-0
   At the first round, write these at the top of the log, adapted to the project with the
   user. From then on the log's version is the one that counts.
 - **Source:** what the bullets were written from. `full PDF`, `full text`, `partial text`,
-  `abstract + PDF spot check`, `abstract`, or `unknown`. It says how far to trust the entry.
+  `abstract + PDF spot check`, `abstract`, `secondary` (only known from how other papers
+  describe it), or `unknown`. It says how far to trust the entry.
 - **Date:** the date of the review round, or the date added for a single paper.
 - Group entries by review round, one `##` section per round. Under the heading, only a link
   to the round's review file:

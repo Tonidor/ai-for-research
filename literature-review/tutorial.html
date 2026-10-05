@@ -216,13 +216,13 @@ review. If you use Zotero, copy the <code>zotero</code> skill too:</p>
 mkdir -p .claude/skills
 cp -R &lt;path to&gt;/ai-for-research/literature-review/lit-review .claude/skills/
 cp -R &lt;path to&gt;/ai-for-research/literature-review/zotero .claude/skills/   # optional</code></pre>
-<p>Start Claude in that folder and type <code>/lit-review</code> and your question. A round has seven steps. Claude
+<p>Start Claude in that folder, the one that holds <code>.claude/skills/</code>, and type <code>/lit-review</code> and your question. A round has seven steps. Claude
 stops twice and waits for you.</p>
 <ol class="steps">
-  <li class="pause"><b>Plan.</b> Question, sub-questions, search terms, what is in or out.</li>
   <li><b>Check what is known.</b> Claude greps your reading log.</li>
-  <li><b>Search and add.</b> OpenAlex. A paper needs at least an abstract.</li>
-  <li class="pause"><b>Full texts.</b> Claude lists the papers it must read in full. You download them.</li>
+  <li class="pause"><b>Plan.</b> Question, sub-questions, search terms, what is in or out.</li>
+  <li><b>Search and add.</b> OpenAlex. Papers without an abstract need a reason to be added.</li>
+  <li class="pause"><b>Full texts.</b> Claude fetches open access papers and lists the rest for you to download.</li>
   <li><b>Reading log.</b> One entry per paper: problem, approach, finding, relevance.</li>
   <li><b>Must-reads.</b> One to three papers for you, in reading order.</li>
   <li><b>Synthesis.</b> Answers per sub-question, contradictions, gaps. Then commit.</li>

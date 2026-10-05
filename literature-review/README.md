@@ -131,7 +131,8 @@ mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/zotero .c
 
 ## Use
 
-Start a session in your review folder and type `/lit-review`, then your question. Claude
+Start Claude in the folder that holds `.claude/skills/`, your review folder. Started
+anywhere else, `/lit-review` is not found. Type `/lit-review`, then your question. Claude
 agrees on a plan with you before searching, asks you to download the papers that need a full
 read, and writes the reading log and the review file. To add one paper, give it the DOI.
 
