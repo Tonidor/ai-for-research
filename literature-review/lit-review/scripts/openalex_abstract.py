@@ -3,7 +3,7 @@
 OpenAlex stores abstracts as an inverted index, a map from each word to its positions.
 This rebuilds the plain text. Exit code 1 means OpenAlex has no abstract for the DOI.
 
-Usage: python openalex_abstract.py 10.1111/ele.12205
+Usage: python3 openalex_abstract.py 10.1111/ele.12205
 """
 
 import json

@@ -13,10 +13,24 @@ Check these before the first round. If one is missing, say so and stop.
 - **Zotero MCP**, [54yyyu/zotero-mcp](https://github.com/54yyyu/zotero-mcp), installed as
   `zotero-mcp-server[semantic]`, registered under the name `zotero`, in web API mode.
   Check with `zotero:zotero_write_capabilities`.
-- **Better BibTeX** in Zotero, so every item has a citekey.
+- **Better BibTeX** in Zotero, so every item has a citekey. Check that one item's
+  `zotero:zotero_get_item_metadata` with `format="json"` shows a `citationKey`.
 - **OpenAlex key** at `~/.config/openalex/api-key`. Optional. Without it the daily budget is
   10 times smaller.
 - **A reading log** `reading-log.md` in a git repo, and a `reviews/` folder for review files.
+
+Paths: `reading-log.md` and `reviews/` are in the working folder. `scripts/` and
+`references/` are in this skill's folder.
+
+## Quick tasks
+
+Adding one paper or checking a citation needs no round.
+
+1. Check for a duplicate: grep the reading log, then search Zotero by DOI.
+2. Check the abstract with `scripts/openalex_abstract.py`. No abstract anywhere means do not
+   add, and say why.
+3. Ask which collection it belongs in, then add it as described in
+   [references/zotero-mcp.md](references/zotero-mcp.md).
 
 ## Workflow
 
@@ -35,14 +49,18 @@ Round progress:
 ```
 
 1. **Plan.** Agree on the review question, split into two or three sub-questions, plus search
-   terms, venues, years and what counts as in or out. Start the review file with Questions
-   and Plan, in the format in [references/formats.md](references/formats.md). Do not search before the user says go.
+   terms, venues, years and what counts as in or out. If the reading log is new, propose the
+   tier definitions in the same question. Start the review file with Questions and Plan, in
+   the format in [references/formats.md](references/formats.md). Do not search before the
+   user says go. After the go, create the round's Zotero collection with
+   `zotero:zotero_create_collection`, named after the round.
 2. **Check what is known.** Grep the reading log first, then search Zotero.
 3. **Search and add.** Use the tools below. Write each search into the review file's Search
    log: query, source, filter, hits, papers added.
    - A paper needs at least an abstract to be added. Before adding, run
-     `python scripts/openalex_abstract.py <DOI>`. Exit code 1 means OpenAlex has none. If no
-     other source has one either, do not add the paper. List it as skipped, with the reason.
+     `python3 <skill folder>/scripts/openalex_abstract.py <DOI>`. Exit code 1 means OpenAlex
+     has none. If no other source has one either, do not add the paper. List it as skipped,
+     with the reason.
    - After adding, if the Zotero item has no abstract, write the script output into it with
      `zotero:zotero_update_item`.
    - Attach the open access PDF when one exists.
@@ -57,7 +75,7 @@ Round progress:
    details. Write them into the review file. Each must be on the step 4 list, so its entry
    was written from the full text.
 7. **Write the synthesis** in the review file. Check each key claim against the paper text
-   through the MCP.
+   through the MCP. Then commit the reading log and the review file.
 
 If nothing good was found, say so plainly. An empty result is a valid result. Never pad the
 list to look productive.

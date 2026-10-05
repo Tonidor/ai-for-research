@@ -11,6 +11,7 @@ Rule of thumb: the MCP finds and reads papers, the reading log holds judgments.
 | What did we decide about X | Not the MCP. Grep the reading log |
 | Papers in the library about a topic | `zotero:zotero_semantic_search`, `filters={"item_type": "journalArticle"}`, then again with `"preprint"` |
 | Paper by author or title | `zotero:zotero_search_items`, short query like `"Smith 2020"` |
+| Paper by DOI | `zotero:zotero_advanced_search`, `[{"field": "DOI", "operation": "contains", "value": "<doi>"}]` |
 | Paper by citekey | `zotero:zotero_advanced_search`, `[{"field": "citationKey", "operation": "is", "value": "<citekey>"}]` |
 | Metadata and abstract | `zotero:zotero_get_item_metadata`, `item_key` |
 | Highlights | `zotero:zotero_get_annotations`, always with `item_key` |

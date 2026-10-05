@@ -17,7 +17,8 @@ from Zotero.
 
 ## Setup
 
-Tested on macOS with the Claude desktop app. Run every command in a real terminal, not in
+Tested on macOS with the Claude desktop app. Steps marked **macOS** or **Linux** differ by
+system, everything else is the same on both. Run every command in a real terminal, not in
 Claude's `!` shell.
 
 ### 1. Claude Code on the command line
@@ -26,10 +27,20 @@ The desktop app does not install the `claude` command.
 
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-On bash, use `~/.bashrc` in place of `~/.zshrc`.
+Then put `~/.local/bin` on the PATH.
+
+- **macOS** (zsh is the default shell):
+  ```bash
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+  ```
+- **Linux** (bash is the usual default):
+  ```bash
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+  ```
+
+Then log in once: run `claude` and type `/login`. The desktop app's login does not carry over.
 
 ### 2. OpenAlex key (optional)
 
@@ -45,7 +56,9 @@ Never paste a key into the chat.
 
 ### 3. Zotero MCP
 
-1. Install `uv` if `uv --version` fails: `brew install uv`.
+1. Install `uv`, the Python tool installer, if `uv --version` fails.
+   - **macOS:** `brew install uv`
+   - **Linux:** `curl -LsSf https://astral.sh/uv/install.sh | sh`
 2. Find your library ID.
    - Group library: the number in the group's URL on zotero.org, `zotero.org/groups/<ID>/...`.
    - Personal library: "Your userID" on [zotero.org/settings/keys](https://www.zotero.org/settings/keys).
@@ -76,9 +89,10 @@ Gives every paper a stable citekey like `smith2020` and keeps a `.bib` file for 
 
 1. Install the `.xpi` from the [releases page](https://github.com/retorquere/zotero-better-bibtex/releases)
    via Zotero, Tools, Plugins, gear icon, Install Plugin From File.
-2. Settings, Better BibTeX, Citation keys: formula `auth.lower + year`.
-3. Settings, Better BibTeX, Export, Fields: omit `file`, so no local paths end up in git.
-4. Right-click the library, Export Library, Better BibTeX, tick "Keep updated". Save it into
+2. Open the settings. **macOS:** Zotero, Settings. **Linux:** Edit, Settings.
+3. Better BibTeX, Citation keys: formula `auth.lower + year`.
+4. Better BibTeX, Export, Fields: omit `file`, so no local paths end up in git.
+5. Right-click the library, Export Library, Better BibTeX, tick "Keep updated". Save it into
    your review folder.
 
 ### 5. The skill
