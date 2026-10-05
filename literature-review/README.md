@@ -87,6 +87,6 @@ skill. The last step is a demo by the presenter, who has the `zotero` skill set 
 | 2 | Ask Claude for 5 papers on a topic, with DOIs, no tools | Check each DOI at `api.openalex.org/works/doi:<doi>` | Some do not exist. Never trust a reference from memory |
 | 2 | Same question, Claude searches OpenAlex | Pick one result, ask who cites it | Real papers, and snowballing in one call |
 | 3 | `/lit-review` and the DOI of that paper | Add it, read the entry, set the tier yourself | The abstract is checked. The log holds the judgment, Claude only drafts it |
-| 3 | Demo: the same DOI again, now with Zotero | Watch | It is found in Zotero by DOI and not added twice. Highlights and PDFs are readable too |
+| 3 | Demo with Zotero: add a paper that is already in the library but not in the log | Watch | Found in Zotero by DOI, nothing added twice. Then ask for its highlights |
 
 Want the Zotero part as well? Follow the [zotero](../zotero/) setup afterwards.
