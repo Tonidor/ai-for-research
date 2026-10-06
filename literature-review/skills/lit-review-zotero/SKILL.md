@@ -22,6 +22,8 @@ If a Zotero check fails, say so and stop.
   Check with `mcp__zotero__zotero_write_capabilities`.
 - **Zotero:** Better BibTeX. Check that an item added more than a day ago shows a
   `citationKey` in `mcp__zotero__zotero_get_item_metadata` with `format="json"`.
+- **Zotero:** a `.bib` file in the working folder, auto-exported by Better BibTeX with "Keep
+  updated" on. Check that it exists and contains the citekey from the check above.
 
 Zotero tools and rules are in [references/zotero.md](references/zotero.md). Read it before the
 first Zotero call.
@@ -89,9 +91,10 @@ Round progress:
    details. Write them into the review file. Each must be on the step 4 list, so its entry
    was written from the full text.
 7. **Write the synthesis** in the review file. Check each key claim against the paper text.
-   Then commit the reading log and the review file. **Zotero:** also commit the `.bib` file if
-   Better BibTeX auto-exports one into the repo, then run
-   `mcp__zotero__zotero_update_search_database`.
+   Then commit the reading log and the review file. **Zotero:** first check that every
+   citekey added in this round is in the `.bib`. If some are missing, Zotero desktop has not
+   synced yet: say so, ask the user to open Zotero, and check again. Then commit the `.bib`
+   with the log, and run `mcp__zotero__zotero_update_search_database`.
 
 If nothing good was found, say so plainly. An empty result is a valid result. Never pad the
 list to look productive.

@@ -115,7 +115,7 @@ Gives every paper a stable citekey like `smith2020` and keeps a `.bib` file for 
 3. Better BibTeX, Citation keys: formula `auth.lower + year`.
 4. Better BibTeX, Export, Fields: omit `file`, so no local paths end up in git.
 5. Right-click the library, Export Library, Better BibTeX, tick "Keep updated". Save it into
-   your review folder.
+   your review folder. Required: the skill checks for this `.bib` before the first round.
 
 ### 3. The skill
 

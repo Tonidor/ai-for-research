@@ -27,8 +27,8 @@ tags:
 - Ask which collection a paper belongs in, unless a workflow already names it.
 - arXiv DOIs (`10.48550/arXiv...`) fail in `mcp__zotero__zotero_add_item`, because it asks
   CrossRef. Add arXiv papers by their arXiv URL with `source_type="url"`.
-- If Better BibTeX auto-exports a `.bib` into the repo, commit it together with the reading
-  log, so both describe the same library.
+- Commit the auto-exported `.bib` together with the reading log, so both describe the same
+  library.
 - After a bulk add, compare the top-level item count before and after.
 - Semantic search without a filter returns highlights first. Filter by item type.
 - Query in the field's own words. Items without an abstract are indexed by title only, so
