@@ -238,22 +238,23 @@ stops twice and waits for you.</p>
 <ol class="steps">
   <li><b>Check what is known.</b> Claude greps your reading log.</li>
   <li class="pause"><b>Plan.</b> Question, sub-questions, search terms, what is in or out.</li>
-  <li><b>Search and add.</b> OpenAlex. Papers without an abstract need a reason to be added.</li>
+  <li><b>Search and add.</b> OpenAlex. Promising papers without an abstract go on your download list.</li>
   <li class="pause"><b>Full texts.</b> Claude fetches open access papers and lists the rest for you to download.</li>
-  <li><b>Reading log.</b> One entry per paper: problem, approach, finding, relevance, and a proposed tier.</li>
+  <li><b>Reading log.</b> One entry per paper: problem, approach, finding, relevance. The review file rates each paper for this review.</li>
   <li><b>Must-reads.</b> One to three papers for you, in reading order.</li>
   <li><b>Synthesis.</b> Answers per sub-question, contradictions, gaps. Then commit.</li>
 </ol>
 <p>A reading log entry looks like this:</p>
 <pre><code>### [smith2020] Short title
-DOI: 10.1234/abcd · Tier: core · Source: full PDF · 2026-10-05
+DOI: 10.1234/abcd · Source: full text · 2026-10-05
 - Problem: what gap the paper addresses.
 - Approach: the setup, with the numbers a model needs.
 - Finding: the result, with numbers.
 - Relevance: what it means for your project.</code></pre>
-<p>Claude proposes the tier, and you can change it. <code>Source</code> says what the entry
-was written from, for example the full PDF, only the abstract, or only how other papers
-describe it. That tells you how far to trust it.</p>
+<p><code>Source</code> says whether the entry was written from the full text or only the
+abstract, so you know how far to trust it. How much a paper matters is not in the log: that
+depends on the question, so each review file rates its papers as core, supporting or
+peripheral.</p>
 
 <h2>Try it</h2>
 <p>Pick a topic from your own research and run a short round:</p>

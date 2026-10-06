@@ -10,10 +10,12 @@ Zotero additions to the plain `lit-review` skill are marked **Zotero:**.
 
 ## Requires
 
-If one is missing, say so and stop.
+If a Zotero check fails, say so and stop.
 
-- A git repo with `reading-log.md` and a `reviews/` folder. Offer to create them when they are
+- `reading-log.md` and a `reviews/` folder in the working folder. Create them if they are
   missing.
+- If the folder is not backed up, neither a git repo nor a synced folder like Google Drive
+  or Dropbox, say so and recommend setting that up. Then continue.
 - Optional: an OpenAlex key at `~/.config/openalex/api-key`. Without it the daily budget is
   10 times smaller.
 - **Zotero:** the Zotero MCP, registered as `zotero`, so its tools are named `mcp__zotero__*`.
@@ -35,10 +37,9 @@ The same rule for a single paper and for papers found in a round.
    say so and stop. **Zotero:** also search the library by DOI. If it is there but not in the
    log, say which collections it is in and offer to write the entry.
 2. Check the abstract: `python3 <skill folder>/scripts/openalex_abstract.py <DOI>`. Exit code
-   1 means OpenAlex has none. A paper without an abstract is a judgment call, not an
-   automatic skip. Weigh how often it is cited, whether papers in the round cite it, and its
-   age: classics and very new papers often lack one. If added, its Source is `secondary`.
-   Either way, say why, and in a round note it in the Search log.
+   1 means OpenAlex has none. A paper without an abstract is only added if it seems
+   promising, for example a well-cited classic or a paper the round's papers cite. It then
+   goes on the list of papers the user downloads, and the Search log says why.
 3. **Zotero:** add it with `if_exists="file"` into the round's collection, or ask which
    collection for a single paper. arXiv papers go in by arXiv URL. If the item has no
    abstract, write it in with `mcp__zotero__zotero_update_item`.
@@ -67,21 +68,22 @@ Round progress:
 1. **Check what is known.** Grep the reading log. **Zotero:** then search the library. The
    plan builds on what is there.
 2. **Plan.** Agree on the review question, split into a few sub-questions, plus search terms,
-   venues, years and what counts as in or out. If this is the first round, propose the tier
-   definitions in the same question. Do not search before the user says go. After the go,
+   venues, years and what counts as in or out. Do not search before the user says go. After the go,
    start the review file with Questions and Plan, in the format in
    [references/formats.md](references/formats.md). **Zotero:** create the round's collection,
    named after the round.
 3. **Search and add.** Use the tools below. Write each search into the review file's Search
    log: query, source, filter, hits, papers added. Add papers as in "Adding a paper".
 4. **Request full texts.** List the papers that must be read in full to be judged reliably:
-   likely core papers, and papers whose numbers, setup or model the review depends on. First
+   likely core papers, papers whose numbers, setup or model the review depends on, and
+   promising papers without an abstract. First
    fetch what is open access: OpenAlex `best_oa_location`, Europe PMC, arXiv. Then give the
    rest to the user, each with its DOI link and the reason. **Zotero:** fetched PDFs are
    attached with `mcp__zotero__zotero_attach_file`. The user saves the rest with the Zotero
    Connector. Wait until they say done.
 5. **Write the reading log.** A round heading with a link to the review file, then one entry
-   per paper. Then fill Papers found in the review file. Formats are in
+   per paper. Then fill Papers found in the review file, with each paper's relevance for
+   this review. Formats are in
    [references/formats.md](references/formats.md).
 6. **Pick one to three must-reads** for the user, in reading order: foundations first, then
    details. Write them into the review file. Each must be on the step 4 list, so its entry

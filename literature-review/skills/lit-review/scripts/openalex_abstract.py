@@ -10,17 +10,11 @@ import json
 import sys
 import urllib.error
 import urllib.request
-from pathlib import Path
-
-KEY_FILE = Path.home() / ".config/openalex/api-key"
 
 doi = sys.argv[1].removeprefix("https://doi.org/")
-request = urllib.request.Request(f"https://api.openalex.org/works/doi:{doi}")
-if KEY_FILE.exists():
-    request.add_header("Authorization", f"Bearer {KEY_FILE.read_text().strip()}")
 
 try:
-    with urllib.request.urlopen(request) as response:
+    with urllib.request.urlopen(f"https://api.openalex.org/works/doi:{doi}") as response:
         work = json.load(response)
 except urllib.error.HTTPError as error:
     sys.exit(f"OpenAlex returned {error.code} for {doi}")

@@ -7,7 +7,7 @@
     "expected_behavior": [
       "Greps the reading log for the DOI",
       "Runs scripts/openalex_abstract.py",
-      "Writes a reading log entry with DOI, a citekey like smith2020, and no Zotero field",
+      "Writes a reading log entry with DOI and a citekey like smith2020",
       "Makes no Zotero calls"
     ]
   },
@@ -15,11 +15,11 @@
     "skills": [
       "lit-review"
     ],
-    "query": "Add this paper: <a DOI with no abstract anywhere>.",
+    "query": "Add this paper: <an obscure DOI with no abstract anywhere and few citations>.",
     "expected_behavior": [
       "Runs scripts/openalex_abstract.py",
-      "Does not add the paper",
-      "Says why: no abstract available"
+      "Does not add the paper, because it does not seem promising",
+      "Says why"
     ]
   },
   {

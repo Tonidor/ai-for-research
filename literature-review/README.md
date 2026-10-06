@@ -47,7 +47,24 @@ Then put `~/.local/bin` on the PATH.
 
 Then log in once: run `claude` and type `/login`. The desktop app's login does not carry over.
 
-### OpenAlex key (optional)
+## Setup for lit-review
+
+Copy the skill into your review folder:
+
+```bash
+mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/skills/lit-review .claude/skills/
+```
+
+That is all. On first use, Claude creates `reading-log.md`, `reviews/` and `pdfs/`. Keep the
+folder backed up, in git or in a synced folder like Google Drive or Dropbox. Claude reminds
+you if it is not.
+
+## Setup for lit-review-zotero
+
+Gives Claude your Zotero library: search by DOI, citekey or topic, read PDFs and highlights,
+and add papers without creating duplicates.
+
+### 0. OpenAlex key (optional)
 
 Free. Without it the daily budget is 10 times smaller.
 
@@ -58,22 +75,6 @@ Free. Without it the daily budget is 10 times smaller.
    ```
 
 Never paste a key into the chat.
-
-## Setup for lit-review
-
-Copy the skill into your review folder:
-
-```bash
-mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/skills/lit-review .claude/skills/
-```
-
-Then create an empty `reading-log.md` and a `reviews/` folder next to it, add `pdfs/` to
-`.gitignore`, and commit. Or ask Claude to do it.
-
-## Setup for lit-review-zotero
-
-Gives Claude your Zotero library: search by DOI, citekey or topic, read PDFs and highlights,
-and add papers without creating duplicates.
 
 ### 1. Zotero MCP
 
@@ -136,6 +137,6 @@ a full read, and writes the reading log and the review file. To add one paper, g
 
 ## Maintaining the two skills
 
-`lit-review-zotero` is `lit-review` plus the parts marked **Zotero:**. A change that is not
-about Zotero goes into `lit-review` first and is then copied into `lit-review-zotero`, so the
-two do not drift apart.
+`lit-review` is the minimal version. `lit-review-zotero` adds Zotero, the OpenAlex key and
+more detail, and marks its Zotero parts **Zotero:**. A change to the review workflow itself
+goes into both.
