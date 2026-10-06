@@ -5,24 +5,28 @@ tags:
 # Literature review with Claude
 
 Claude searches papers and keeps a reading log and one review file per round in git. You
-make the judgments.
+make the judgments. Never trust a reference Claude writes from memory. Every paper comes from
+a search tool or a library.
 
-- **OpenAlex** finds papers, checks DOIs and follows citations. No install needed.
-- **The `lit-review` skill** holds the workflow and the formats.
-- **Git** holds your reading log and review files.
-- **Zotero** is optional. With the `zotero` skill, papers and PDFs also go into your Zotero
-  library. See [Optional: Zotero](#optional-zotero).
+The tutorial is [tutorial.html](tutorial.html). Open it in a browser.
 
-Never trust a reference Claude writes from memory. Every paper comes from a search tool or
-from Zotero.
+## Choose a version
 
-## Setup
+| Skill | Papers live in | Needs |
+|---|---|---|
+| `lit-review` | the reading log and a `pdfs/` folder | Claude Code |
+| `lit-review-zotero` | your Zotero library, plus the reading log | Claude Code, the Zotero MCP, Better BibTeX |
+
+Both run the same review rounds. Install one of them, not both. The skills are in
+[skills/](skills/).
+
+## Common setup
 
 Tested on macOS with the Claude desktop app. Steps marked **macOS** or **Linux** differ by
 system, everything else is the same on both. Run every command in a real terminal, not in
 Claude's `!` shell.
 
-### 1. Claude Code on the command line
+### Claude Code on the command line
 
 The desktop app does not install the `claude` command.
 
@@ -43,7 +47,7 @@ Then put `~/.local/bin` on the PATH.
 
 Then log in once: run `claude` and type `/login`. The desktop app's login does not carry over.
 
-### 2. OpenAlex key (optional)
+### OpenAlex key (optional)
 
 Free. Without it the daily budget is 10 times smaller.
 
@@ -55,26 +59,23 @@ Free. Without it the daily budget is 10 times smaller.
 
 Never paste a key into the chat.
 
-### 3. The lit-review skill
+## Setup for lit-review
 
-Copy the `lit-review/` folder from this repo into your review folder:
+Copy the skill into your review folder:
 
 ```bash
-mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/lit-review .claude/skills/
+mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/skills/lit-review .claude/skills/
 ```
 
 Then create an empty `reading-log.md` and a `reviews/` folder next to it, add `pdfs/` to
 `.gitignore`, and commit. Or ask Claude to do it.
 
-For Zotero, continue with [Optional: Zotero](#optional-zotero).
-
-## Optional: Zotero
+## Setup for lit-review-zotero
 
 Gives Claude your Zotero library: search by DOI, citekey or topic, read PDFs and highlights,
-and add papers without creating duplicates. `lit-review` uses it automatically when the
-`zotero` skill is installed.
+and add papers without creating duplicates.
 
-### 4. Zotero MCP
+### 1. Zotero MCP
 
 1. Install `uv`, the Python tool installer, if `uv --version` fails.
    - **macOS:** `brew install uv`
@@ -103,7 +104,7 @@ and add papers without creating duplicates. `lit-review` uses it automatically w
    ZOTERO_API_KEY="$(cat ~/.config/zotero/api-key)" ZOTERO_LIBRARY_ID=<ID> ZOTERO_LIBRARY_TYPE=group zotero-mcp update-db
    ```
 
-### 5. Better BibTeX
+### 2. Better BibTeX
 
 Gives every paper a stable citekey like `smith2020` and keeps a `.bib` file for LaTeX.
 
@@ -115,30 +116,26 @@ Gives every paper a stable citekey like `smith2020` and keeps a `.bib` file for 
 5. Right-click the library, Export Library, Better BibTeX, tick "Keep updated". Save it into
    your review folder.
 
-### 6. The zotero skill
+### 3. The skill
 
-Copy the `zotero/` skill folder next to `lit-review/`:
+Copy the skill into your review folder:
 
 ```bash
-mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/zotero .claude/skills/
+mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/skills/lit-review-zotero .claude/skills/
 ```
 
-### Rules worth knowing
-
-- Adding always uses `if_exists="file"`. The default creates duplicates.
-- Semantic search only sees titles for items without an abstract.
-- Claude never writes notes into Zotero and asks before deleting.
+Then create an empty `reading-log.md` and a `reviews/` folder next to it, and commit. Or ask
+Claude to do it.
 
 ## Use
 
-Start Claude in the folder that holds `.claude/skills/`, your review folder. Started
-anywhere else, `/lit-review` is not found. Type `/lit-review`, then your question. Claude
-agrees on a plan with you before searching, asks you to download the papers that need a full
-read, and writes the reading log and the review file. To add one paper, give it the DOI.
+Start Claude in the folder that holds `.claude/skills/`, your review folder. Started anywhere
+else, the skill is not found. Type `/lit-review` or `/lit-review-zotero`, then your question.
+Claude agrees on a plan with you before searching, asks you to download the papers that need
+a full read, and writes the reading log and the review file. To add one paper, give it the DOI.
 
-With the `zotero` skill installed as well, papers also go into your Zotero library.
-Nothing changes in how you use `/lit-review`.
+## Maintaining the two skills
 
-## Tutorial
-
-The tutorial page is [tutorial.html](tutorial.html). Open it in a browser.
+`lit-review-zotero` is `lit-review` plus the parts marked **Zotero:**. A change that is not
+about Zotero goes into `lit-review` first and is then copied into `lit-review-zotero`, so the
+two do not drift apart.

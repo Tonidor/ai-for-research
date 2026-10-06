@@ -3,7 +3,6 @@
     "skills": [
       "lit-review"
     ],
-    "setup": "No Zotero MCP.",
     "query": "Add this paper: <a DOI with an abstract in OpenAlex, not in the reading log>.",
     "expected_behavior": [
       "Greps the reading log for the DOI",
@@ -16,7 +15,6 @@
     "skills": [
       "lit-review"
     ],
-    "setup": "No Zotero MCP.",
     "query": "Add this paper: <a DOI with no abstract anywhere>.",
     "expected_behavior": [
       "Runs scripts/openalex_abstract.py",
@@ -26,22 +24,8 @@
   },
   {
     "skills": [
-      "lit-review",
-      "zotero"
-    ],
-    "setup": "Zotero MCP connected.",
-    "query": "Add the paper with DOI <a DOI already in the library>.",
-    "expected_behavior": [
-      "Reads the zotero skill",
-      "Finds the existing item by DOI",
-      "Creates no new item. The top-level item count is unchanged"
-    ]
-  },
-  {
-    "skills": [
       "lit-review"
     ],
-    "setup": "Any.",
     "query": "Run a review round on <a topic with no relevant literature>.",
     "expected_behavior": [
       "Agrees on a plan with sub-questions and waits for go",

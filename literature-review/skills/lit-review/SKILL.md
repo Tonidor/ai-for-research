@@ -1,6 +1,6 @@
 ---
 name: lit-review
-description: Runs literature review rounds with OpenAlex, a reading log and one review file per round, kept in git. Works without Zotero, and uses the zotero skill when it is installed. Use when planning a review, searching or snowballing papers, adding papers to Zotero, writing reading log entries or review files, or checking a citation.
+description: Runs literature review rounds with OpenAlex, a reading log and one review file per round, kept in git. No reference manager needed. Use when planning a review, searching or snowballing papers, adding a paper, writing reading log entries or review files, or checking a citation.
 tags:
   - ai-generated
 ---
@@ -17,12 +17,6 @@ If one is missing, say so and stop.
 
 Paths: `reading-log.md`, `reviews/` and `pdfs/` are in the working folder. `scripts/` and
 `references/` are in this skill's folder.
-
-## With Zotero
-
-If the `zotero` skill is installed, read it before the first paper is added. It adds to four
-points here: the duplicate check, adding a paper, the round's collection, and full texts.
-Without it, the reading log alone is the record of which papers exist.
 
 ## Adding a paper
 

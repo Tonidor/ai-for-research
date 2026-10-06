@@ -1,36 +1,8 @@
 ---
-name: zotero
-description: Works with a Zotero library through the Zotero MCP. Checks for duplicates, adds papers by DOI, finds papers by citekey, DOI, author or topic, and reads PDFs and highlights. Use when the user mentions Zotero, their library, a citekey or highlights, or when another skill such as lit-review stores or reads papers.
 tags:
   - ai-generated
 ---
-# Zotero
-
-## Requires
-
-If one is missing, say so and stop.
-
-- **Zotero MCP**, registered as `zotero`, so its tools are named `mcp__zotero__*`. Check with
-  `mcp__zotero__zotero_write_capabilities`.
-- **Better BibTeX**, for citekeys. Check that an item added more than a day ago shows a
-  `citationKey` in `mcp__zotero__zotero_get_item_metadata` with `format="json"`.
-
-## With lit-review
-
-The `lit-review` skill hands over at four points.
-
-- **Duplicate check:** also search the library by DOI. If the paper is there but not in the
-  reading log, say which collections it is in and offer to write the log entry.
-- **Adding a paper:** add it with `if_exists="file"` into the round's collection, or ask which
-  collection for a single paper. Put its Zotero key in the reading log entry, and use its
-  `citationKey` as the citekey.
-- **The round's collection:** create it after the user says go, named after the round.
-- **Full texts:** the user saves them with the Zotero Connector onto the item, not into
-  `pdfs/`. Read them through the tools below.
-
-A paper added through the API has an empty `citationKey` until Zotero desktop syncs and
-Better BibTeX assigns one. Meanwhile use the lit-review citekey rule, and after the sync check
-that the keys match.
+# Zotero MCP
 
 ## Tools
 

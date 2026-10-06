@@ -1,0 +1,13 @@
+[
+  {
+    "skills": [
+      "lit-review-zotero"
+    ],
+    "setup": "Zotero MCP connected.",
+    "query": "Add the paper with DOI <a DOI already in the library>.",
+    "expected_behavior": [
+      "Finds the existing item by DOI",
+      "Creates no new item. The top-level item count is unchanged"
+    ]
+  }
+]
