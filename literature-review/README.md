@@ -20,13 +20,29 @@ The tutorial is [tutorial.html](tutorial.html). Open it in a browser.
 Both run the same review rounds. Install one of them, not both. The skills are in
 [skills/](skills/).
 
-## Common setup
+## Setup for lit-review
+
+No setup beyond getting the skill. It works in any Claude Code: the desktop app, the command
+line or an IDE.
+
+1. Get this repo, with `git clone https://github.com/Tonidor/ai-for-research.git`, or download
+   it as a ZIP from GitHub. Later, `git pull` gets updates.
+2. Copy the skill into your review folder:
+   ```bash
+   mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/skills/lit-review .claude/skills/
+   ```
+3. Start Claude in that folder and type `/lit-review`. The skill tells you if anything else is
+   missing.
+
+## Setup for lit-review-zotero
+
+Gives Claude your Zotero library: search by DOI, citekey or topic, read PDFs and highlights,
+and add papers without creating duplicates.
 
 Tested on macOS with the Claude desktop app. Steps marked **macOS** or **Linux** differ by
-system, everything else is the same on both. Run every command in a real terminal, not in
-Claude's `!` shell.
+system. Run every command in a real terminal, not in Claude's `!` shell.
 
-### Claude Code on the command line
+### 1. Claude Code on the command line
 
 The desktop app does not install the `claude` command.
 
@@ -47,24 +63,7 @@ Then put `~/.local/bin` on the PATH.
 
 Then log in once: run `claude` and type `/login`. The desktop app's login does not carry over.
 
-## Setup for lit-review
-
-Copy the skill into your review folder:
-
-```bash
-mkdir -p .claude/skills && cp -R <path to this repo>/literature-review/skills/lit-review .claude/skills/
-```
-
-That is all. On first use, Claude creates `reading-log.md`, `reviews/` and `pdfs/`. Keep the
-folder backed up, in git or in a synced folder like Google Drive or Dropbox. Claude reminds
-you if it is not.
-
-## Setup for lit-review-zotero
-
-Gives Claude your Zotero library: search by DOI, citekey or topic, read PDFs and highlights,
-and add papers without creating duplicates.
-
-### 0. OpenAlex key (optional)
+### 2. OpenAlex key (optional)
 
 Free. Without it the daily budget is 10 times smaller.
 
@@ -76,7 +75,7 @@ Free. Without it the daily budget is 10 times smaller.
 
 Never paste a key into the chat.
 
-### 1. Zotero MCP
+### 3. Zotero MCP
 
 1. Install `uv`, the Python tool installer, if `uv --version` fails.
    - **macOS:** `brew install uv`
@@ -105,7 +104,7 @@ Never paste a key into the chat.
    ZOTERO_API_KEY="$(cat ~/.config/zotero/api-key)" ZOTERO_LIBRARY_ID=<ID> ZOTERO_LIBRARY_TYPE=group zotero-mcp update-db
    ```
 
-### 2. Better BibTeX
+### 4. Better BibTeX
 
 Gives every paper a stable citekey like `smith2020` and keeps a `.bib` file for LaTeX.
 
@@ -117,7 +116,7 @@ Gives every paper a stable citekey like `smith2020` and keeps a `.bib` file for 
 5. Right-click the library, Export Library, Better BibTeX, tick "Keep updated". Save it into
    your review folder. Required: the skill checks for this `.bib` before the first round.
 
-### 3. The skill
+### 5. The skill
 
 Copy the skill into your review folder:
 

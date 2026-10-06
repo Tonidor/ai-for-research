@@ -10,6 +10,9 @@ tags:
 
 - The working folder needs `reading-log.md`, a `reviews/` folder and a `pdfs/` folder.
   Create them if they are missing.
+- The abstract script needs `python3`. If `python3 --version` fails, tell the user how to get
+  it. **macOS:** `xcode-select --install`. **Linux:** the package manager, for example
+  `sudo apt install python3`. Nothing else needs installing.
 - If the folder is not backed up, neither a git repo nor a synced folder like Google Drive
   or Dropbox, say so and recommend setting that up. Then continue.
 
