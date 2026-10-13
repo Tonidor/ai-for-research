@@ -60,24 +60,11 @@ python3 ~/.claude/skills/simplified-research-english/scripts/check.py --mode des
 
 ## Make it yours
 
-This copy is Kai's version. Its dictionary has the terms of Kai's field (Karma mechanisms). Before
-you use the skill, change these parts:
-
-1. Replace “Kai” with your name in `SKILL.md`, `references/writing-rules.md`, and
-   `references/dictionary.md`. To find each place, run `grep -rn Kai` in the skill folder.
-2. Replace sections 4 to 7 of `dictionary.md` with the terms of your
-   field: technical names, technical verbs, words with two meanings, and symbols. Keep the column names, because
-   `check.py` reads each table with a “Do not use” column. Put “?” after a word to get a hint
-   and not an error.
-3. Read sections 1 to 3 of `dictionary.md` (evidence words, connecting words, and words to avoid),
-   and change them to your taste.
-4. Change the rules in `references/writing-rules.md`. If you change a limit, for example the
-   25-word limit, also change it in `SKILL.md` and in `scripts/check.py`.
-5. Change the `description` in `SKILL.md`. It tells Claude when to load the skill. This copy loads
-   only when you ask for it.
-
-Claude can do the first draft for you. Ask it, for example: “Adapt this skill to my field. Use my
-papers in `<folder>` to build the dictionary.” Then read each new entry before you keep it.
+This copy is Kai's version. Sections 4 to 7 of its dictionary have example entries from control and
+game theory. Before you use the skill:
+- Replace `Kai` with your name.
+- Give Claude some materials to adapt the dictionary and rules to make the skill yours. For example, ask Claude to scan your Zotero library.
+- And then iterate and adapt.
 
 ## Other repos
 
