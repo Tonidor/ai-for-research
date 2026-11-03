@@ -43,10 +43,11 @@ If PowerShell refuses to activate the venv, run
 
 ## With Claude Code
 
-Copy the `tdd` skill to `~/.claude/skills/`, start `claude` in this folder and say
-*"Let's build the controller test first from SPEC.md."* Claude runs `pytest` and `git` itself.
+Copy the [tdd skill](../skills/tdd/SKILL.md) to your skills folder:
 
-## With claude.ai
+| macOS, Linux | Windows (PowerShell) |
+|---|---|
+| `cp -r ../skills/tdd ~/.claude/skills/` | `Copy-Item -Recurse ..\skills\tdd ~\.claude\skills\` |
 
-Upload the `tdd` skill under **Settings → Capabilities → Skills**. Attach the four files above
-and say the same. Claude gives you the commands. Run them and paste the output back.
+Then start `claude` in this folder and say *"Let's build the controller test-first from
+SPEC.md."*
