@@ -42,12 +42,13 @@ def simulate(window, controller=None, setpoint=21.0, hours=7):
     return times, temps, commands
 
 
-if __name__ == "__main__":
+def plot(controller_class=PIController, filename="heater.png"):
+    """Plot both scenarios, temperature on top and u below, and save to filename."""
     import matplotlib.pyplot as plt
 
     fig, axes = plt.subplots(2, 2, sharex=True, sharey="row", figsize=(10, 6))
     for col, window in enumerate(WINDOW_CONDUCTANCE):
-        times, temps, commands = simulate(window)
+        times, temps, commands = simulate(window, controller=controller_class(dt=DT))
         hours = [t / 3600 for t in times]
         axes[0, col].set_title(f"{window} window")
         axes[0, col].plot(hours, temps)
@@ -63,5 +64,9 @@ if __name__ == "__main__":
     axes[0, 0].set_ylabel("Temperature (°C)")
     axes[1, 0].set_ylabel("u (%)")
     fig.tight_layout()
-    fig.savefig("heater.png")
-    print("Saved heater.png")
+    fig.savefig(filename, dpi=150)
+    print(f"Saved {filename}")
+
+
+if __name__ == "__main__":
+    plot()

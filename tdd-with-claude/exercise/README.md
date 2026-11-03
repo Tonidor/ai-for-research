@@ -8,7 +8,8 @@ The controller in `controller.py` is a stub. Build it test first from [SPEC.md](
 
 | File | What |
 |---|---|
-| `SPEC.md` | What the controller must do |
+| `SPEC-with-todo.md` | The spec without requirements. Start here and write your own. |
+| `SPEC.md` | The full spec, to compare with |
 | `controller.py` | The controller, a stub for now |
 | `heater.py` | Room model and the two scenarios. `python heater.py` plots them. |
 | `test_heater.py` | One smoke test to start from |

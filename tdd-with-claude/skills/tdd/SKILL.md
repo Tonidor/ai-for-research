@@ -24,13 +24,15 @@ moving on.
 
 ## 3. Tests
 
-Propose a list of tests that together cover the spec. Where it applies, also propose
-general checks: edge cases, invalid input, limits, error handling, security.
-Mark these as beyond the spec. The user picks and orders the final list.
+Show a table that maps each requirement to the tests that cover it. Below it, suggest
+general checks where they apply: edge cases, invalid input, limits, error handling,
+security. Mark these as beyond the spec. Ask the user to confirm the list once.
 
 ## 4. Red, green, refactor
 
-For each test on the list:
+Work through the whole list without stopping. Do not ask between tests.
+
+For each test:
 
 1. **Red.** Write the test. Run it with the project's test runner. Confirm it fails for
    the right reason. If it passes right away, say so and move on.
@@ -38,10 +40,12 @@ For each test on the list:
    Run all tests.
 3. **Refactor.** Only if it helps. All tests stay green.
 
-After each step, show the user a one-line status: test name, red or green, what changed.
+After each step, print a one-line status: test name, red or green, what changed.
 
-Do not change a test once it is written. If a test seems wrong, explain why and propose
-a change. Apply it only after the user confirms.
+Do not change a test once it is written. If a test seems wrong, stop, explain why and
+propose a change. Apply it only after the user confirms, then continue.
+
+When all tests are green, show a summary table: test, requirement, status.
 
 ## 5. Commit
 
