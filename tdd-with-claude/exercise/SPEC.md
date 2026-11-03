@@ -17,10 +17,10 @@ Two separate 7 h runs, each starting at 19 °C, with a window open from 3 h to 4
 ## Requirements
 
 In both runs, after the start and after the window closes:
-1. Steady-state error below 0.05 °C.
-2. Overshoot below 1 °C.
-3. Settling time to ± 0.2 °C below 1 h.
+1. Steady-state error < 0.05 °C
+2. Overshoot < 1 °C
+3. Settling time to ± 0.2 °C < 1 h
 
 At all times:
 
-4. $u$ within its limits.
+4. $u$ within 0–100 %
