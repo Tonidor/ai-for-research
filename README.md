@@ -11,5 +11,6 @@ need into your own projects.
 |---|---|---|
 | [git-with-claude](git-with-claude/) | Why git makes working with Claude safe, and how to set up `gh` | 2026-09-22 |
 | [literature-review](literature-review/) | Literature reviews with OpenAlex and a reading log, in two versions: `lit-review`, and `lit-review-zotero` with Zotero | 2026-10-05 |
+| [tdd-with-claude](tdd-with-claude/exercise/) | Test-driven development with Claude: a PI heater exercise and a `tdd` skill | 2026-11-03 |
 
 To get updates, run `git pull` and copy the changed files again.

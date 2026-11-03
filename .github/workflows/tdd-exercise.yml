@@ -1,0 +1,26 @@
+name: TDD exercise
+
+on:
+  push:
+    paths: ["tdd-with-claude/exercise/**", ".github/workflows/tdd-exercise.yml"]
+  pull_request:
+    paths: ["tdd-with-claude/exercise/**", ".github/workflows/tdd-exercise.yml"]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: tdd-with-claude/exercise
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: pytest -v
+      - run: python heater.py
