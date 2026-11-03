@@ -6,7 +6,7 @@ tags:
 
 Discrete PI controller for a room heater.
 - Setpoint $r = 21$ °C. Room time constant 1 h.
-- Actuator command $u \in [0, 100]\,\%$.
+- Actuator command $u \in [0, 100]\,\%$: the share of the heater's maximum power.
 
 ## Scenarios
 
