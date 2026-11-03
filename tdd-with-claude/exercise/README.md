@@ -4,12 +4,12 @@ tags:
 ---
 # Exercise: a room heater, test first
 
-The controller in `controller.py` is a stub. Build it test first from [SPEC.md](SPEC.md).
+The controller in `controller.py` is a stub. Build it test-first. Start from [SPEC-with-todo.md](SPEC-with-todo.md).
 
 | File | What |
 |---|---|
 | `SPEC-with-todo.md` | The spec without requirements. Start here and write your own. |
-| `SPEC.md` | The full spec, to compare with |
+| `SPEC-example.md` | A full spec, to compare with |
 | `controller.py` | The controller, a stub for now |
 | `heater.py` | Room model and the two scenarios. `python heater.py` plots them. |
 | `test_heater.py` | One smoke test to start from |
@@ -51,4 +51,4 @@ Copy the [tdd skill](../skills/tdd/SKILL.md) to your skills folder:
 | `cp -r ../skills/tdd ~/.claude/skills/` | `Copy-Item -Recurse ..\skills\tdd ~\.claude\skills\` |
 
 Then start `claude` in this folder and say *"Let's build the controller test-first from
-SPEC.md."*
+SPEC-with-todo.md."*

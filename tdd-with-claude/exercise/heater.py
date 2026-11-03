@@ -1,6 +1,6 @@
 """Room model and test bench for the heater controller.
 
-Run `python heater.py` to plot both scenarios from SPEC.md.
+Run `python heater.py` to plot both scenarios from SPEC-example.md.
 """
 
 from controller import PIController

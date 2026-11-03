@@ -1,4 +1,4 @@
-"""Discrete PI controller for the room heater. Built test first, see SPEC.md."""
+"""Discrete PI controller for the room heater. Built test first, see SPEC-example.md."""
 
 
 class PIController:
