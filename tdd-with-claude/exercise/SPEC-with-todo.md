@@ -16,4 +16,16 @@ Two separate 7 h runs, each starting at 19 °C, with a window open from 3 h to 4
 
 ## Requirements
 
-TODO: What would you test?
+Band: $|T - r| \le 0.2$ K. All times are from the start of a run.
+
+1. **Limits:** $0 \le u \le 100\,\%$ at every step.
+2. **Fast convergence:** from 19 °C, $T$ enters the band within 30 min and stays in it until 3 h.
+3. **Small overshoot:** $T \le 21.5$ °C at all times, in both scenarios.
+4. **Good tracking:** $|T - r| \le 0.05$ K at 3 h and at 7 h, in both scenarios.
+5. **Disturbance rejection, small window:** $T \ge 20.5$ °C while the window is open.
+   $T$ is back in the band within 30 min after the window opens and after it closes.
+6. **Disturbance rejection, large window:** $u = 100\,\%$ from 3.25 h until the window
+   closes. $T$ is back in the band within 30 min after the window closes.
+
+Low energy use is not a separate requirement. The room's losses set the energy. The only
+waste a controller can add is heating above $r$, which 3 and 6 rule out.

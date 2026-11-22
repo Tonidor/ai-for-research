@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="550 160 195 350" stroke="#2b2b2b" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+  <ellipse cx="640" cy="498" rx="62" ry="9" fill="#000" opacity="0.15" stroke="none"/>
+  <!-- scarf dropped on the floor -->
+  <path d="M676,492 Q700,480 724,490 Q712,500 690,500 Q680,500 676,492 z" fill="#f3c74b" stroke-width="3"/>
+  <!-- legs -->
+  <g fill="none">
+    <path d="M624,405 L620,484" stroke-width="30"/><path d="M624,405 L620,484" stroke="#2f4a7a" stroke-width="23"/>
+    <path d="M658,405 L662,484" stroke-width="30"/><path d="M658,405 L662,484" stroke="#2f4a7a" stroke-width="23"/>
+  </g>
+  <ellipse cx="612" cy="492" rx="22" ry="10" fill="#2b2b2b"/>
+  <ellipse cx="664" cy="494" rx="20" ry="9" fill="#2b2b2b"/>
+  <!-- torso -->
+  <path d="M600,300 Q641,284 682,300 L692,412 Q641,422 590,412 z" fill="#d9534f"/>
+  <path d="M664,294 Q676,298 682,300 L692,412 Q680,416 668,417 Q674,350 664,294 z" fill="#b8423f" stroke="none"/>
+  <!-- arms -->
+  <path d="M684,312 Q702,356 694,398" fill="none" stroke-width="21"/>
+  <path d="M684,312 Q702,356 694,398" fill="none" stroke="#c64a46" stroke-width="14"/>
+  <circle cx="694" cy="402" r="10" fill="#f2c9a0"/>
+  <path d="M598,312 Q580,356 588,398" fill="none" stroke-width="21"/>
+  <path d="M598,312 Q580,356 588,398" fill="none" stroke="#d9534f" stroke-width="14"/>
+  <circle cx="588" cy="402" r="10" fill="#f2c9a0"/>
+  <!-- neck and head, flushed -->
+  <rect x="631" y="282" width="20" height="16" fill="#e5a98a" stroke="none"/>
+  <circle cx="642" cy="248" r="40" fill="#f4bc9c"/>
+  <ellipse cx="602" cy="252" rx="7" ry="10" fill="#f4bc9c"/>
+  <path d="M603,240 Q606,200 645,202 Q682,202 684,238 Q668,224 646,228 Q622,220 603,240 z" fill="#5a3a22"/>
+  <!-- worried eyebrows, eyes, panting mouth -->
+  <path d="M620,234 Q628,232 636,226" fill="none" stroke-width="3"/>
+  <path d="M650,226 Q658,232 666,234" fill="none" stroke-width="3"/>
+  <circle cx="630" cy="246" r="5" fill="#2b2b2b" stroke="none"/>
+  <circle cx="656" cy="246" r="5" fill="#2b2b2b" stroke="none"/>
+  <circle cx="628" cy="244" r="1.7" fill="#ffffff" stroke="none"/>
+  <circle cx="654" cy="244" r="1.7" fill="#ffffff" stroke="none"/>
+  <path d="M631,277 Q643,260 655,277 Q643,281 631,277 z" fill="#7a2a2a" stroke-width="3"/>
+  <ellipse cx="617" cy="261" rx="9" ry="5" fill="#e8737a" stroke="none" opacity="0.8"/>
+  <ellipse cx="668" cy="261" rx="9" ry="5" fill="#e8737a" stroke="none" opacity="0.8"/>
+  <!-- sweat drops -->
+  <g fill="#8fd0f5" stroke-width="2.5">
+    <path d="M594,212 q-8,14 0,18 q8,-4 0,-18 z"/>
+    <path d="M690,206 q-9,16 0,20 q9,-4 0,-20 z"/>
+    <path d="M700,246 q-7,12 0,15 q7,-3 0,-15 z"/>
+    <path d="M584,268 q-6,11 0,13 q6,-2 0,-13 z"/>
+    <path d="M666,214 q-5,9 0,11 q5,-2 0,-11 z"/>
+  </g>
+  <!-- heat lines -->
+  <g fill="none" stroke="#e8573c" stroke-width="3.5">
+    <path d="M618,192 q-7,-8 0,-16 q7,-8 0,-16"/>
+    <path d="M642,186 q-7,-8 0,-16 q7,-8 0,-16"/>
+    <path d="M666,192 q-7,-8 0,-16 q7,-8 0,-16"/>
+  </g>
+</svg>
